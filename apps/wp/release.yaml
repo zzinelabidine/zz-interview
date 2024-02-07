@@ -9,12 +9,12 @@ spec:
   interval: 10s
   chart:
     spec:
-      chart: ./wp/
+      chart: wordpress
       version: "0.1.x"
       sourceRef:
       sourceRef:
         kind: HelmRepository
-        name: wordpress
+        name: werollingupdate
       interval: 1m
   valuesFrom:
     - kind: ConfigMap
