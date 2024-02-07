@@ -6,5 +6,7 @@ metadata:
   namespace: default
 spec:
   interval: 1m0s
-  url: oci://public.ecr.aws/werollingupdate
-  type: "oci"
+  secretRef:
+    name: docker-config
+  type: oci
+  url: oci://public.ecr.aws/werollingupdate/wordpress

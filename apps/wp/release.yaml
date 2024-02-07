@@ -1,20 +1,20 @@
-
 ---
-apiVersion: helm.toolkit.fluxcd.io/v2beta1
+apiVersion: helm.toolkit.fluxcd.io/v2beta2
 kind: HelmRelease
 metadata:
-  name: wordpress
+  name: wp
   namespace: default
 spec:
-  interval: 10s
   chart:
     spec:
       chart: wordpress
-      version: "0.1.x"
+      reconcileStrategy: ChartVersion
       sourceRef:
         kind: HelmRepository
-        name: werollingupdate
-      interval: 1m
+        name: wp
+      version: '>0.1.0'
+  interval: 1m0s
+  releaseName: wordpress
   valuesFrom:
     - kind: ConfigMap
-      name: wp-value
+      name: wp-values
