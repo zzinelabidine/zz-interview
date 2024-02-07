@@ -12,7 +12,6 @@ spec:
       chart: wordpress
       version: "0.1.x"
       sourceRef:
-      sourceRef:
         kind: HelmRepository
         name: werollingupdate
       interval: 1m
