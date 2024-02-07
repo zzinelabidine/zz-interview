@@ -1,0 +1,9 @@
+---
+apiVersion: image.toolkit.fluxcd.io/v1beta2
+kind: ImageRepository
+metadata:
+  name: wp
+  namespace: flux-system
+spec:
+  image: public.ecr.aws/werollingupdate/interview-zz
+  interval: 10s
