@@ -12,9 +12,9 @@ spec:
       chart: ./wp/
       version: "0.1.x"
       sourceRef:
-        kind: GitRepository
-        name: wp
-        namespace: flux-system
+      sourceRef:
+        kind: HelmRepository
+        name: wordpress
       interval: 1m
   valuesFrom:
     - kind: ConfigMap
