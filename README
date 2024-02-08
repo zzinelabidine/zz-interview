@@ -83,4 +83,7 @@ flux bootstrap github \
     - kind: ConfigMap
       name: wp-values
 
+
+For apply this , with kubectl apply -f 'Fluxcdfile.yaml'
+
 thanks ou for you attention .
