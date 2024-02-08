@@ -50,8 +50,6 @@ flux bootstrap github \
   --personal
 
 
-
-
 2-  Create CD with the automation deploy helmrelease with tag deploy on registry image when push is done   : 
 
 
