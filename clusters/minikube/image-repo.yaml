@@ -6,4 +6,4 @@ metadata:
   namespace: flux-system
 spec:
   image: public.ecr.aws/werollingupdate/interview-zz
-  interval: 10s
+  interval: 5m0s

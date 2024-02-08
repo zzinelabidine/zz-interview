@@ -5,7 +5,7 @@ metadata:
   name: wp
   namespace: default
 spec:
-  interval: 1m0s
+  interval: 5m0s
   secretRef:
     name: flux-system
   url: https://github.com/zzinelabidine/zz-interview.git
