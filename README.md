@@ -86,4 +86,6 @@ I pushed this chart on my ECR charts registry public :
 
 For apply this , with kubectl apply -f 'Fluxcdfile.yaml'
 
+For test : docker tag public.ecr.aws/werollingupdate/interview-zz:v0.1.0 public.ecr.aws/werollingupdate/interview-zz:v0.1.10
+
 thanks ou for you attention .
