@@ -11,3 +11,5 @@ spec:
   secretRef:
     name: flux-system
   url: https://github.com/zzinelabidine/zz-interview.git
+    ref:
+    branch: main

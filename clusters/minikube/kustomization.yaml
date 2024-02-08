@@ -2,12 +2,12 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 namespace: default
 resources:
-  - namespace.yaml
-  - repository.yaml
-  - release.yaml
+  - ../../apps/wp/namespace.yaml
+  - ../../apps/wp/repository.yaml
+  - ../../apps/wp/release.yaml
 configMapGenerator:
   - name: wp-values
     files:
-      - values.yaml=values.yaml
+      - values.yaml=mmyvalues.yaml
 configurations:
-  - kustomization.yaml
+  - kustomizeconfig.yaml
