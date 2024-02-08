@@ -6,10 +6,8 @@ metadata:
   namespace: default
 spec:
   interval: 5m0s
-  secretRef:
-    name: flux-system
   url: https://github.com/zzinelabidine/zz-interview.git
-    ref:
+  ref:
     branch: main
   ignore: |
     # exclude all
