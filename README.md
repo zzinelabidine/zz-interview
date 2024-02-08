@@ -12,7 +12,7 @@ wp-chart : app charts files
 
 1- I pushed my own image wp on my own registry on oci://public.ecr.aws/werollingupdate/wordpress:0.1.0
 
-**WS ECR public --  
+*ECR public*  
 
 image:
   registry: public.ecr.aws
@@ -32,7 +32,9 @@ I pushed this chart on my ECR charts registry public :
 
 #Evrey think is working with my cred you can tested
 
- 3 - Fluxcd Part :
+### FLUXCD
+
+#### Fluxcd Part :
 
 
  1 - First connect Flucd with my repo github with boostrap cli and CRED $GITHUB_USER && $GITHUB_TOKEN  :
@@ -56,13 +58,13 @@ flux bootstrap github \
 * Gitrepository : to detect any change on my own branch main only on folder apps/wp all the **5 min** than apply kustomise to deploy my helmrelease with myvalues!!
 
 
-* Imagerepo : To detect any change on my public registry : public.ecr.aws/werollingupdate/interview-zz **evrey 5m**
+* Imagerepo : To detect any change on my public registry : **public.ecr.aws/werollingupdate/interview-zz** **evrey 5m**
 
 * ImagePolicy : to get tags more than > 0.1.x
 
 * kustomise to tell fluxcd to created my release with the new values (where its will change the image tag) where a the new tag is pushed :
 
-  **tag: v0.1.0   # {"$imagepolicy": "flux-system:wp:tag"} ** syntaxe to tell fluxcd to change tag with the new one 
+  **tag: v0.1.0   # {"$imagepolicy": "flux-system:wp:tag"}** syntaxe to tell fluxcd to change tag with the new one 
 
 
   For this i specified :
