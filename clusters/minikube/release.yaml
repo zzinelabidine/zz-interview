@@ -13,8 +13,7 @@ spec:
         kind: HelmRepository
         name: wp
       version: '0.1.0'
+      valuesFiles:
+         - values.yaml
   interval: 1m0s
   releaseName: wordpress
-  valuesFrom:
-    - kind: ConfigMap
-      name: wp-values
