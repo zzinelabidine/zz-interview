@@ -14,21 +14,21 @@ wp-chart : app charts files
 
 *ECR public*  
 
-image:
-  registry: public.ecr.aws
-  repository: werollingupdate/interview-zz 
-  tag: v0.1.0   # {"$imagepolicy": "flux-system:wp:tag"}
-  digest: ""
+    image:
+      registry: public.ecr.aws
+      repository: werollingupdate/interview-zz 
+      tag: v0.1.0   # {"$imagepolicy": "flux-system:wp:tag"}
+      digest: ""
 
 
 2- I created Helm charts wordpress with bitnami/wp  
 
 I pushed this chart on my ECR charts registry public :
 
-  url: oci://public.ecr.aws/werollingupdate/
+     url: oci://public.ecr.aws/werollingupdate/
 
-  chart : wordpress 
-  version: 0.1.0
+        chart : wordpress 
+        version: 0.1.0
 
 #Evrey think is working with my cred you can tested
 
@@ -41,15 +41,15 @@ I pushed this chart on my ECR charts registry public :
 
 
 
-flux bootstrap github \
-  --components-extra=image-reflector-controller,image-automation-controller \
-  --token-auth \
-  --owner=zzinelabidine \
-  --repository=zz-interview \
-  --branch=main \
-  --path=clusters/minikube \
-  --read-write-key \
-  --personal
+    flux bootstrap github \
+      --components-extra=image-reflector-controller,image-automation-controller \
+      --token-auth \
+      --owner=zzinelabidine \
+      --repository=zz-interview \
+      --branch=main \
+      --path=clusters/minikube \
+      --read-write-key \
+      --personal
 
 
 2-  Create CD with the automation deploy helmrelease with tag deploy on registry image when push is done   : 
@@ -72,16 +72,16 @@ flux bootstrap github \
   HelmRepository :
 
 
-  type: oci
-  url: oci://public.ecr.aws/werollingupdate/
-   secretRef:
-   name: docker-config
-  
-  And my helmrelease with 
+      type: oci
+      url: oci://public.ecr.aws/werollingupdate/
+      secretRef:
+      name: docker-config
+      
+      And my helmrelease with 
 
-   valuesFrom:
-    - kind: ConfigMap
-      name: wp-values
+      valuesFrom:
+        - kind: ConfigMap
+          name: wp-values
 
 
 For apply this , with kubectl apply -f 'Fluxcdfile.yaml'
