@@ -11,3 +11,8 @@ spec:
   url: https://github.com/zzinelabidine/zz-interview.git
     ref:
     branch: main
+  ignore: |
+    # exclude all
+    /*
+    # include charts directory
+    !/apps/wp/
