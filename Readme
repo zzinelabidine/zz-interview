@@ -1,0 +1,82 @@
+### Hello Welcom to Fluxcd interview with Zied !!
+
+
+As we see we have 3 repos :
+
+
+### Helm charts 
+
+1- I pushed my own image wp on my own registry on 
+
+**WS ECR public --  
+
+image:
+  registry: public.ecr.aws
+  repository: werollingupdate/interview-zz 
+  tag: v0.1.0   # {"$imagepolicy": "flux-system:wp:tag"}
+  digest: ""
+
+
+2- I created Helm charts wordpress with bitnami/wp  
+
+I pushed this chart on my ECR charts registry public :
+
+  url: oci://public.ecr.aws/werollingupdate/
+
+  chart : wordpress 
+  version: 0.1.0
+
+#Evrey think is working with my cred you can tested
+
+ 3 - Flucd Part :
+
+
+ 1 - First connect Flucd with my repo github :
+
+
+
+flux bootstrap github \
+  --components-extra=image-reflector-controller,image-automation-controller \
+  --token-auth \
+  --owner=zzinelabidine \
+  --repository=zz-interview \
+  --branch=main \
+  --path=clusters/minikube \
+  --read-write-key \
+  --personal
+
+
+of course with $GITHUB_TOKEN
+
+
+2-  create CD with the automation deploy helmrelease with tag deploy on registry image when push is done   : 
+
+
+* Gitrepository : to detect any change on my own branch main isn't the best practice on production !!!
+
+* Imagerepo : to detect any change on my public registry : public.ecr.aws/werollingupdate/interview-zz evrey 10s
+
+* ImagePolicy : to get tags more than > 0.1.x
+
+* kustomise to tell fluxcd to created my release with the new values where i the new tag is done :
+
+  tag: v0.1.0   # {"$imagepolicy": "flux-system:wp:tag"}
+
+
+  For this i specified :
+
+  HelmRepository :
+
+
+  type: oci
+  url: oci://public.ecr.aws/werollingupdate/
+   secretRef:
+   name: docker-config
+  
+  And my helmrelease with 
+
+   valuesFrom:
+    - kind: ConfigMap
+      name: wp-values
+
+thanks ou for you attention .
