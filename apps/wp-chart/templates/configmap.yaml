@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: wp-values
+  namespace: default
+data:
+  values.yaml: |
+    name=zzinelabidine
+    entreprise=wp
