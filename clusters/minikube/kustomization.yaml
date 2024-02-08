@@ -8,6 +8,6 @@ resources:
 configMapGenerator:
   - name: wp-values
     files:
-      - values.yaml=../apps/wp/myvalues.yaml
+      - values.yaml=../../apps/wp/myvalues.yaml
 configurations:
   - kustomizeconfig.yaml
